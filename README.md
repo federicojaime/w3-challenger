@@ -23,3 +23,14 @@ Links útiles (posterior a ejecución del comando y generación de contenedores)
 * [App (React)](http://localhost:3000)
 * [Api (Node)](http://localhost:3001/api/docs) (documentación -> Swagger)
 * [PhpMyAdmin](http://localhost:8080) (Solo con fines prácticos)
+
+
+### Imagenes del sistema en funcionamiento. 
+
+![Sistema w3](https://i.ibb.co/sj1yVmT/w3.jpg)
+
+![Sistema Swagger](https://i.ibb.co/w7RSxJL/swagger-w3.jpg)
+
+![Sistema bd](https://i.ibb.co/X4VfH0g/bd.jpg) 
+
+
