@@ -1,0 +1,122 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "W3 IT SOLUTIONS - OpenAPI 3.0",
+    "description": "Servicio desarrollado para completar el desafío técnico de la consultora W3 IT SOLITIONS que consiste en <br /><br /> <i>Desarrollar 1 servicio de tipo GET que reciba un parámetro en el querystring con un valor y retorna un listado con los primeros 5 países que contengan en el nombre el valor enviado donde el valor debe ser mayor o igual a 3 caracteres, en caso contrario debe retornar un código 204.</i>",
+    "contact": {
+      "email": "hansjal@gmail.com"
+    },
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7070/api"
+    },
+    {
+      "url": "http://localhost:3001/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "paises",
+      "description": "Paises y su población"
+    }
+  ],
+  "paths": {
+    "/paises": {
+      "get": {
+        "tags": [
+          "paises"
+        ],
+        "summary": "Búsqueda de paises",
+        "description": "Se buscan el/los paises que contengan en su nombre el valor propocionado [máximo 5 registros].",
+        "operationId": "paises_1",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "nombre",
+            "schema": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 25
+            },
+            "description": "Nombre (o parte del nombre de un país)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Paises"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pais": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "pais": {
+            "type": "string",
+            "example": "México"
+          },
+          "poblacion": {
+            "type": "integer",
+            "example": 127792000
+          },
+          "porcentaje": {
+            "type": "number",
+            "example": 15.2
+          }
+        }
+      },
+      "Paises": {
+        "type": "array",
+        "items": {
+          "properties": {
+            "schema": {
+              "$ref": "#/components/schemas/Pais"
+            }
+          },
+          "example": [
+            {
+              "id": 1,
+              "pais": "China",
+              "poblacion": 1403426000,
+              "porcentaje": 25.6473
+            },
+            {
+              "id": 2,
+              "pais": "Brasil",
+              "poblacion": 211420000,
+              "porcentaje": 3.8636
+            },
+            {
+              "id": 3,
+              "pais": "Rusia",
+              "poblacion": 146712000,
+              "porcentaje": 2.6811
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+  db:
+    image: mysql:8.2.0
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: quilmes
+      MYSQL_DATABASE: w3
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    volumes:
+      - ./w3-back/data/w3.sql:/docker-entrypoint-initdb.d/w3.sql
+      - voldbw3:/var/lib/mysql
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    restart: unless-stopped
+    ports:
+        - 8080:80
+    environment:
+        # PMA_ARBITRARY: 1
+        PMA_HOST: db
+        PMA_USER: user
+        PMA_PASSWORD: pass
+    depends_on:
+      - db
+  api:
+    build: ./w3-back/
+    ports:
+      - 3001:3001
+    environment:
+      PORT: 3001
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USER: user
+      MYSQL_PASS: pass
+      MYSQL_DATABASE: w3
+    #env_file:
+    #  - ./w3-back/.env
+    depends_on:
+      - db
+  app:
+    build: ./w3-front/
+    ports:
+      - 3000:3000
+    environment:
+      VITE_API_URL: http://localhost:3001/api/
+    #env_file:
+    #  - ./w3-front/.env
+    depends_on:
+      - api
+volumes:
+  voldbw3:

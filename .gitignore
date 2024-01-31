@@ -1,0 +1,5 @@
+w3-back/node_modules
+w3-back/.env
+w3-front/node_modules
+w3-front/.env
+w3-front/dist
