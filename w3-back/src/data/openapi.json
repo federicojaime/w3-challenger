@@ -4,7 +4,7 @@
     "title": "W3 IT SOLUTIONS - OpenAPI 3.0",
     "description": "Servicio desarrollado para completar el desafío técnico de la consultora W3 IT SOLITIONS que consiste en <br /><br /> <i>Desarrollar 1 servicio de tipo GET que reciba un parámetro en el querystring con un valor y retorna un listado con los primeros 5 países que contengan en el nombre el valor enviado donde el valor debe ser mayor o igual a 3 caracteres, en caso contrario debe retornar un código 204.</i>",
     "contact": {
-      "email": "hansjal@gmail.com"
+      "email": "federiconj@gmail.com"
     },
     "version": "1.0.11"
   },
